@@ -4,7 +4,7 @@ namespace School.Services
 {
     public interface IStudentService
     {
-        public List<Student> GetStudents();
+        public List<Student> GetStudents(string? searchWord);
         public Student GetStudent(int id);
         public int AddStudent(Student student);
         public Student UpdateStudent(int id, Student student);

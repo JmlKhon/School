@@ -18,9 +18,9 @@ namespace School.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Student>> GetAllStudents()
+        public ActionResult<List<Student>> GetAllStudents([FromQuery] string? searchWord)
         {
-            return _service.GetStudents();
+            return _service.GetStudents(searchWord);
         }
 
         [HttpGet("id")]

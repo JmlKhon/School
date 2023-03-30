@@ -11,12 +11,17 @@ namespace School.Services
         {
             _context = context;
         }
-        public List<Student> GetStudents()
+        public List<Student> GetStudents(string? searchWord)
         {
-            var results = _context.Students
+            var students = _context.Students
                 .Include(x => x.Address).ToList();
 
-            return results;
+            if (!string.IsNullOrEmpty(searchWord))
+            {
+                students = students.Where(n => n.FirstName.Contains(searchWord)).ToList();
+            }
+
+            return students;
         }
 
         public Student GetStudent(int id)
